@@ -1,0 +1,231 @@
+package complementarios;
+
+import javax.swing.JOptionPane;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
+
+public class si {
+
+
+    public static void main(String[] args) {
+
+        String opciones = "a,b,c,d,e,f";
+        String opcion = "";
+        String añadir = "";
+        String cosa1 = "";
+        String cosas = "libro, dvd, disco, revista";
+
+        //ventana de cuadro??
+
+        //ventana que pregunta que quiere hacer el usuario
+
+
+        do {
+            opcion = JOptionPane.showInputDialog(
+                    "Selecciona una opción: \n" +
+                            "a. Agregar un material\n" +
+                            "b. Modificar material\n" +
+                            "c. Listar materiales\n" +
+                            "d. Borrar material\n" +
+                            "e. Buscar material\n" +
+                            "f. Salir\n"
+            );
+
+
+            if (opcion != null && opciones.contains(opcion.toLowerCase())) {
+                switch (opcion.toLowerCase()) {
+                    case "a":
+
+                        //variable
+
+                        añadir = JOptionPane.showInputDialog(
+                                "Ingresa el material que quieres agregar: \n" +
+                                        "libros \n" +
+                                        "dvd \n" +
+                                        "disco \n" +
+                                        "revista \n"
+
+                        );
+
+                        //el switch se activa si se seleciona una de las opciones
+
+
+                        if (añadir != null) {
+                            switch (añadir.toLowerCase()) {
+                                case "libros":
+                                    String tituloLibro = JOptionPane.showInputDialog("Ingresa el título del libro:");
+                                    String autorLibro = JOptionPane.showInputDialog("Ingresa el autor del libro:");
+                                    int numeroPaginas = Integer.parseInt((JOptionPane.showInputDialog("Ingresa el numero de páginas")));
+                                    String editorial = JOptionPane.showInputDialog("Ingresa la editorial:");
+
+                                    try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\djcje\\OneDrive\\Escritorio\\Desafio 1 (CJ - CP)\\Desafio1\\srcdatosdeconsola.txt", true))) {
+                                        writer.write("Libro - Título: " + tituloLibro + ", Autor: " + autorLibro + ", Número de páginas: " + numeroPaginas + ", Editorial: " + editorial);
+                                        writer.newLine();
+                                    } catch (IOException e) {
+                                        System.out.println("Error al escribir en el archivo: " + e.getMessage());
+                                    }
+
+                                    System.out.println("*************************");
+                                    System.out.println("Datos del libro:");
+                                    System.out.println("Título: " + tituloLibro);
+                                    System.out.println("Autor: " + autorLibro);
+                                    System.out.println("Número de páginas: " + numeroPaginas);
+                                    System.out.println("Editorial: " + editorial);
+                                    System.out.println("*************************");
+                                    break;
+
+                                case "revista":
+                                    String tituloRevista = JOptionPane.showInputDialog("Ingresa el título de la revista:");
+                                    String periodicidad = JOptionPane.showInputDialog("Ingresa la periodicidad de la revista (diaria, semanal, quincenal, mensual):");
+                                    String editorial1 = JOptionPane.showInputDialog("Ingresa la editorial:");
+                                    int fechaPublicacion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el año de publicación del libro:"));
+
+                                    try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\djcje\\OneDrive\\Escritorio\\Desafio 1 (CJ - CP)\\Desafio1\\srcdatosdeconsola1.txt", true))) {
+                                        writer.write("Libro - Título: " + tituloRevista + ", Autor: " + periodicidad + ", Número de páginas: " + editorial1 + ", Editorial: " + fechaPublicacion);
+                                        writer.newLine();
+                                    } catch (IOException e) {
+                                        System.out.println("Error al escribir en el archivo: " + e.getMessage());
+                                    }
+
+                                    System.out.println("Datos de la revista:");
+                                    System.out.println("Título: " + tituloRevista);
+                                    System.out.println("Periodicidad: " + periodicidad);
+                                    System.out.println("Editorial: " + editorial1);
+                                    System.out.println("Año de publicación: " + fechaPublicacion);
+
+                                    break;
+
+                                case "disco":
+                                    String tituloCD = JOptionPane.showInputDialog("Ingrese el titulo del CDs de audio:");
+                                    String artista = JOptionPane.showInputDialog("Ingrese el nombre del artista:");
+                                    String generoCD = JOptionPane.showInputDialog("Ingresa el género:");
+                                    int duracion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la duracion del CD:"));
+                                    int numCanciones = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de canciones:"));
+
+                                    //con esto se van guardando los datos al archivo de texto correspondiente
+
+                                    try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\djcje\\OneDrive\\Escritorio\\Desafio 1 (CJ - CP)\\Desafio1\\srcdatosdeconsola2.txt", true))) {
+                                        writer.write("Libro - Título: " + tituloCD + ", Autor: " + artista + ", Número de páginas: " + generoCD + ", Editorial: " + duracion + " numCanciones: " + numCanciones);
+                                        writer.newLine();
+                                    } catch (IOException e) {
+                                        System.out.println("Error al escribir en el archivo: " + e.getMessage());
+                                    }
+
+                      
+
+                                    System.out.println("Datos del CD:");
+                                    //Copyright Caleb Peñate :))))
+                                    System.out.println("Título: " + tituloCD);
+                                    System.out.println("Artista: " + artista);
+                                    System.out.println("Género: " + generoCD);
+                                    System.out.println("Duración: " + duracion + " minutos");
+                                    System.out.println("Número de canciones: " + numCanciones);
+
+
+                                    break;
+
+                                case "dvd":
+                                    String tituloDVD = JOptionPane.showInputDialog("Ingrese el titulo del DVD:");
+                                    String director = JOptionPane.showInputDialog("Ingrese el nombre del director:");
+                                    int duracionDVD = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la duracion del DVD:"));
+                                    String generoDVD = JOptionPane.showInputDialog("Ingrese el género:");
+
+                                    try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\djcje\\OneDrive\\Escritorio\\Desafio 1 (CJ - CP)\\Desafio1\\srcdatosdeconsola3.txt", true))) {
+                                        writer.write("Libro - Título: " + tituloDVD + ", Autor: " + director + ", Número de páginas: " + duracionDVD + ", Editorial: " + generoDVD);
+                                        writer.newLine();
+                                    } catch (IOException e) {
+                                        System.out.println("Error al escribir en el archivo: " + e.getMessage());
+                                    }
+
+                                    System.out.println("Título: " + tituloDVD);
+                                    System.out.println("Director: " + director);
+                                    System.out.println("Duración: " + duracionDVD + " minutos");
+                                    System.out.println("Género: " + generoDVD);
+
+                                    break;
+
+
+                            }
+                        }
+
+                    case "b":
+                        String materialModificar = JOptionPane.showInputDialog("Selecciona el material que quieres modificar: \n" +
+                                "1. Libro\n" +
+                                "2. Revista\n" +
+                                "3. Disco\n" +
+                                "4. DVD\n");
+
+                        if (materialModificar != null) {
+                            switch (materialModificar.toLowerCase()) {
+                                case "libro":
+
+                                    String tituloLibro = JOptionPane.showInputDialog("Ingresa un nuevo titulo:");
+                                    String autorLibro = JOptionPane.showInputDialog("Ingresa un nuevo autor:");
+                                    int numeroPaginas = Integer.parseInt((JOptionPane.showInputDialog("Ingresa un nuevo numero de páginas")));
+                                    String editorial = JOptionPane.showInputDialog("Ingresa nueva editorial:");
+
+                                    //nuevamente se guardan los datos dependendiendo a que switch vaya
+
+                                    try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\djcje\\OneDrive\\Escritorio\\Desafio 1 (CJ - CP)\\Desafio1\\srcdatosdeconsola.txt", true))) {
+                                        writer.write("Libro - Título: " + tituloLibro + ", Autor: " + autorLibro + ", Número de páginas: " + numeroPaginas + ", Editorial: " + editorial);
+                                        writer.newLine();
+                                    } catch (IOException e) {
+                                        System.out.println("Error al escribir en el archivo: " + e.getMessage());
+                                    }
+
+                                    System.out.println("*************************");
+                                    System.out.println("Datos del libro:");
+                                    System.out.println("Título: " + tituloLibro);
+                                    System.out.println("Autor: " + autorLibro);
+                                    System.out.println("Número de páginas: " + numeroPaginas);
+                                    System.out.println("Editorial: " + editorial);
+                                    System.out.println("*************************");
+
+
+                                    break;
+
+                                case "c":
+
+                                    String Listarmateriales = JOptionPane.showInputDialog("Selecciona el material que quieres listar: \n" +
+                                            "1. Libro\n" +
+                                            "2. Revista\n" +
+                                            "3. Disco\n" +
+                                            "4. DVD\n");
+
+                                    if (Listarmateriales != null)
+
+
+                                    //agregar el material
+                                    break;
+
+                                case "d":
+                                    //agregar el material
+                                    break;
+
+                                case "e":
+                                    //agregar el material
+                                    break;
+
+                                case "f":
+                                    //Para salirse
+                                    break;
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Opción incorrecta, ingresa una opción valida");
+                        }
+                }
+                while (!"f".equalsIgnoreCase(opcion)) {
+
+                }
+            }
+
+
+
+        }
+        while (!"f".equalsIgnoreCase(opcion)) ;
+        {
+        }
+    }
+    }
