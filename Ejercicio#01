@@ -1,0 +1,50 @@
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class SaludoPersona {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Saludo inicial
+        System.out.println("¡Hola! Vamos a conocerte un poco mejor.");
+
+        // Solicitar nombre
+        System.out.print("Por favor, introduce tu nombre y apellido (Ej. Rafael Torres): ");
+        String nombreCompleto = scanner.nextLine();
+
+        // Solicitar sexo
+        System.out.print("Indica tu sexo (Masculino/Femenino): ");
+        String sexo = scanner.nextLine();
+
+        // Solicitar fecha de nacimiento
+        String fechaNacimiento = "";
+        boolean fechaValida = false;
+
+        while (!fechaValida) {
+            System.out.print("Introduce tu fecha de nacimiento (dd-mm-aaaa): ");
+            fechaNacimiento = scanner.nextLine();
+            fechaValida = validarFecha(fechaNacimiento);
+            if (!fechaValida) {
+                System.out.println("Formato de fecha inválido. Por favor, intenta de nuevo.");
+            }
+        }
+
+        // Mostrar la información ingresada
+        System.out.println("\nGracias por la información!");
+        System.out.println("Nombre: " + nombreCompleto);
+        System.out.println("Sexo: " + sexo);
+        System.out.println("Fecha de Nacimiento: " + fechaNacimiento);
+        
+        scanner.close();
+    }
+
+    // Método para validar la fecha usando expresiones regulares
+    private static boolean validarFecha(String fecha) {
+        // Expresión regular para validar el formato dd-mm-aaaa
+        String regex = "^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(\\d{4})$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(fecha);
+        return matcher.matches();
+    }
+}
