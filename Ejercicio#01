@@ -1,15 +1,40 @@
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 
 public class SaludoPersona {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        
-        // Saludo inicial
-        System.out.println("¡Hola! Vamos a conocerte un poco mejor.");
 
-        // Solicitar nombre
+        String nombre;
+        String apellido;
+        String sexo;
+
+
+        // Saludo inicial
+        JOptionPane.showMessageDialog(null, "Bienvenido a nuestro programa");
+
+        //System.out.println("¡Hola! Vamos a conocerte un poco mejor.");
+
+        // Solicitar APELLIDO
+
+        nombre=JOptionPane.showInputDialog(null, "Porfavor introduce tu nombre" );
+
+        //solicitar APELLIDO
+
+        apellido=JOptionPane.showInputDialog(null, "Porfavor introduce tu apellido" );
+
+        //solicitar SEXO
+
+        String opciones[] = {"Opcion 1 - Masculino", "Opcion 2 - Femenino", "Prefiero no decirlo"};
+        String sexoop = (String)  JOptionPane.showInputDialog("Elije un sexo");
+
+
+        //Caleb :)
+        // UTILIZAR JOoptionPane
+
+
         System.out.print("Por favor, introduce tu nombre y apellido (Ej. Rafael Torres): ");
         String nombreCompleto = scanner.nextLine();
 
