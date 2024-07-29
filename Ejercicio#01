@@ -17,7 +17,7 @@ public class SaludoPersona {
 
         //System.out.println("¡Hola! Vamos a conocerte un poco mejor.");
 
-        // Solicitar APELLIDO
+        // Solicitar NOMBRE
 
         nombre=JOptionPane.showInputDialog(null, "Porfavor introduce tu nombre" );
 
