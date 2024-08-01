@@ -34,21 +34,12 @@ public class SaludoPersona {
         //Caleb :)
         // UTILIZAR JOoptionPane
 
-
-        System.out.print("Por favor, introduce tu nombre y apellido (Ej. Rafael Torres): ");
-        String nombreCompleto = scanner.nextLine();
-
-        // Solicitar sexo
-        System.out.print("Indica tu sexo (Masculino/Femenino): ");
-        String sexo = scanner.nextLine();
-
         // Solicitar fecha de nacimiento
         String fechaNacimiento = "";
         boolean fechaValida = false;
 
         while (!fechaValida) {
-            System.out.print("Introduce tu fecha de nacimiento (dd-mm-aaaa): ");
-            fechaNacimiento = scanner.nextLine();
+            fechaNacimiento = JOptionPane.showInputDialog(null, "Porfavor introduce tu fecha de nacimiento (dd-mm-aaaa):");
             fechaValida = validarFecha(fechaNacimiento);
             if (!fechaValida) {
                 System.out.println("Formato de fecha inválido. Por favor, intenta de nuevo.");
@@ -56,12 +47,10 @@ public class SaludoPersona {
         }
 
         // Mostrar la información ingresada
-        System.out.println("\nGracias por la información!");
-        System.out.println("Nombre: " + nombreCompleto);
-        System.out.println("Sexo: " + sexo);
-        System.out.println("Fecha de Nacimiento: " + fechaNacimiento);
-        
-        scanner.close();
+        JOptionPane.showMessageDialog(null, "\nGracias por la información!");
+        JOptionPane.showMessageDialog(null, "Nombre: " + nombre + "\nApellido: " + apellido);
+        JOptionPane.showMessageDialog(null, "Sexo: " + sexoop);
+        JOptionPane.showMessageDialog(null,"Fecha de Nacimiento: " + fechaNacimiento);
     }
 
     // Método para validar la fecha usando expresiones regulares
