@@ -44,7 +44,7 @@ public class SaludoPersona {
         boolean fechaValida = false;
 
         while (!fechaValida) {
-            fechaNacimiento = JOptionPane.showInputDialog(null, "Porfavor introduce tu fecha de nacimiento (dd-mm-aaaa):");
+            fechaNacimiento = JOptionPane.showInputDialog(null, "Porfavor introduce tu fecha de nacimiento (dd-mm-yyyy):");
             fechaValida = validarFecha(fechaNacimiento);
             if (!fechaValida) {
                 System.out.println("Formato de fecha inválido. Por favor, intenta de nuevo.");
@@ -52,7 +52,7 @@ public class SaludoPersona {
         }
 
 // Procesar fecha de nacimiento
-LocalDate fechaNac = LocalDate.parse(fechaNacimiento, DateTimeFormatter.ofPattern("dd-mm-aaaa"));
+LocalDate fechaNac = LocalDate.parse(fechaNacimiento, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 LocalDate fechaActual = LocalDate.now();
 long edad = ChronoUnit.YEARS.between(fechaNac, fechaActual);
 
