@@ -1,0 +1,137 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+
+public class Empleados{
+    private String numeroEmpleado;
+    private String primerNombre;
+    private String segundoNombre;
+    private String primerApellido;
+    private String segundoApellido;
+    private String direccion;
+    private String categoriaLaboral;
+    private double salario;
+    private String correoElectronico;
+    private LocalDate fechaNacimiento;
+    private int edad;
+    private Sucursal sucursal;
+
+    public Empleados(String numeroEmpleado, String primerNombre, String segundoNombre,
+                    String primerApellido, String segundoApellido, String direccion,
+                    String categoriaLaboral, double salario, String correoElectronico,
+                    LocalDate fechaNacimiento, Sucursal sucursal) {
+        this.numeroEmpleado = numeroEmpleado;
+        this.primerNombre = primerNombre;
+        this.segundoNombre = segundoNombre;
+        this.primerApellido = primerApellido;
+        this.segundoApellido = segundoApellido;
+        this.direccion = direccion;
+        this.categoriaLaboral = categoriaLaboral;
+        this.salario = salario;
+        this.correoElectronico = correoElectronico;
+        this.fechaNacimiento = fechaNacimiento;
+        this.sucursal = sucursal;
+        this.edad = calcularEdad(fechaNacimiento);
+    }
+
+    private int calcularEdad(LocalDate fechaNacimiento) {
+        LocalDate today = LocalDate.now();
+        int edad = today.getYear() - fechaNacimiento.getYear();
+        if (today.getMonthValue() < fechaNacimiento.getMonthValue() ||
+                (today.getMonthValue() == fechaNacimiento.getMonthValue() &&
+                        today.getDayOfMonth() < fechaNacimiento.getDayOfMonth())) {
+            edad--;
+        }
+        return edad;
+    }
+
+    @Override
+    public String toString() {
+        return "Empleado{" +
+                "numeroEmpleado='" + numeroEmpleado + '\'' +
+                ", nombre='" + primerNombre + " " + segundoNombre + " " + primerApellido + " " + segundoApellido + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", categoriaLaboral='" + categoriaLaboral + '\'' +
+                ", salario=" + salario +
+                ", correoElectronico='" + correoElectronico + '\'' +
+                ", fechaNacimiento=" + fechaNacimiento +
+                ", edad=" + edad +
+                ", sucursal=" + (sucursal != null ? sucursal.getNombre() : "No asignada") +
+                '}';
+    }
+
+    // Getters y Setters
+    public String getNumeroEmpleado() { return numeroEmpleado; }
+    public void setSucursal(Sucursal sucursal) { this.sucursal = sucursal; }
+}
+
+public class Sucursal {
+    private String nombre;
+
+    public Sucursal(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+}
+
+
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String NumEmpleado;
+        String Nombre1;
+        String Nombre2;
+        String Apellido1;
+        String Apellido2;
+        String Direccion;
+        String CategoriaLaboral;
+        String Salario;
+        String Correo;
+        String FechaNacimiento;
+        String Sucursal;
+
+
+
+        // Solicitar datos del empleado
+        NumEmpleado = JOptionPane.showInputDialog(null,"Ingrese el número de empleado: ");
+
+        Nombre1= JOptionPane.showInputDialog(null,"Ingrese el primer nombre: ");
+
+        Nombre2= JOptionPane.showInputDialog(null,"Ingrese el segundo nombre: ");
+
+        Apellido1= JOptionPane.showInputDialog(null,"Ingrese el primer apellido: ");
+
+        Apellido2= JOptionPane.showInputDialog(null,"Ingrese el segundo apellido: ");
+
+        Direccion= JOptionPane.showInputDialog(null,"Ingrese la dirección: ");
+
+        CategoriaLaboral= JOptionPane.showInputDialog(null,"Ingrese la categoría laboral: ");
+
+        Salario= JOptionPane.showInputDialog(null,"Ingrese el salario: ");
+
+        Correo= JOptionPane.showInputDialog(null,"Ingrese el correo electrónico: ");
+
+        FechaNacimiento= JOptionPane.showInputDialog(null,"Ingrese la fecha de nacimiento (yyyy-mm-dd): ");
+
+        Sucursal= JOptionPane.showInputDialog(null,"Ingrese el nombre de la sucursal: ");
+
+
+        // Mostrar la información del empleado
+        JOptionPane.showMessageDialog(null,"El codigo del empleado es: " + NumEmpleado);
+        JOptionPane.showMessageDialog(null,"El nombre del empleado es: " + Nombre1 + Nombre2);
+        JOptionPane.showMessageDialog(null,"El apellido del empleado es: " + Apellido1 + Apellido2);
+        JOptionPane.showMessageDialog(null,"El direccion del empleado es: " + Direccion);
+        JOptionPane.showMessageDialog(null,"El categoria laboral es: " + CategoriaLaboral);
+        JOptionPane.showMessageDialog(null,"El salario del empleado es: " + Salario);
+        JOptionPane.showMessageDialog(null, "El correo electronico del empleado es: " + Correo);
+        JOptionPane.showMessageDialog(null,"La fecha de nacimiento del empleado es: " + FechaNacimiento);
+        JOptionPane.showMessageDialog(null, "EL nombre de la sucursal donde trabaja el empleado es: " + Sucursal);
+    }
+}
